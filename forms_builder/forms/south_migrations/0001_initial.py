@@ -19,12 +19,6 @@ class Migration(SchemaMigration):
             ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
             ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('login_required', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('send_email', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('email_from', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
-            ('email_copies', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
-            ('email_subject', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
-            ('email_message', self.gf('django.db.models.fields.TextField')(blank=True)),
         ))
         db.send_create_signal('forms', ['Form'])
 
@@ -113,17 +107,11 @@ class Migration(SchemaMigration):
         'forms.form': {
             'Meta': {'object_name': 'Form'},
             'button_text': ('django.db.models.fields.CharField', [], {'default': "u'Submit'", 'max_length': '50'}),
-            'email_copies': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'email_from': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'email_message': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'email_subject': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'intro': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'login_required': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'response': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'send_email': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'sites': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['sites.Site']", 'symmetrical': 'False'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '100', 'db_index': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),

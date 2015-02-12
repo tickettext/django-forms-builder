@@ -73,17 +73,7 @@ class AbstractForm(models.Model):
     expiry_date = models.DateTimeField(_("Expires on"),
         help_text=_("With published selected, won't be shown after this time"),
         blank=True, null=True)
-    login_required = models.BooleanField(_("Login required"), default=False,
-        help_text=_("If checked, only logged in users can view the form"))
-    send_email = models.BooleanField(_("Send email"), default=True, help_text=
-        _("If checked, the person entering the form will be sent an email"))
-    email_from = models.EmailField(_("From address"), blank=True,
-        help_text=_("The address the email will be sent from"))
-    email_copies = models.CharField(_("Send copies to"), blank=True,
-        help_text=_("One or more email addresses, separated by commas"),
-        max_length=200)
-    email_subject = models.CharField(_("Subject"), max_length=200, blank=True)
-    email_message = models.TextField(_("Message"), blank=True)
+
 
     objects = FormManager()
 
@@ -117,9 +107,7 @@ class AbstractForm(models.Model):
         status = self.status == STATUS_PUBLISHED
         publish_date = self.publish_date is None or self.publish_date <= now()
         expiry_date = self.expiry_date is None or self.expiry_date >= now()
-        authenticated = for_user is not None and for_user.is_authenticated()
-        login_required = (not self.login_required or authenticated)
-        return status and publish_date and expiry_date and login_required
+        return status and publish_date and expiry_date
 
     def total_entries(self):
         """

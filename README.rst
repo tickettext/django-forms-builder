@@ -201,33 +201,6 @@ since you could simply define the widgets on the field classes directly
 in their code.
 
 
-Email Templates
-===============
-
-The `django-email-extras`_ package is used to send multipart email
-notifications using Django's templating system for constructing the
-emails, to users submitting forms, and any recipients specified when
-creating a form via Django's admin.
-
-Templates for HTML and text versions of the email can be found in the
-``templates/email_extras`` directory. This allows you to customize the
-look and feel of emails that are sent to form submitters. Along with
-each of the ``form_response`` email templates which are used to email
-the form submitter, you'll also find corresponding
-``form_response_copies`` templates, that extend the former set - these
-are used as the templates for emailing any extra recipients specified
-for the form in the admin interface. By default they simply extend
-the ``form_response`` templates, but you can modify them should you
-need to customize the emails sent to any extra recipients.
-
-.. note::
-
-    With ``django-email-extras`` installed, it's also possible to
-    configure `PGP`_ encrypted emails to be send to staff members,
-    allowing forms to be built for capturing sensitive information.
-    Consult the `django-email-extras`_ documentation for more info.
-
-
 Signals
 =======
 
@@ -286,6 +259,5 @@ by installing the `xlwt`_ package::
 
 .. _`pip`: http://www.pip-installer.org/
 .. _`South`: http://south.aeracode.org/
-.. _`django-email-extras`: https://github.com/stephenmcd/django-email-extras
 .. _`PGP`: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
 .. _`xlwt`: http://www.python-excel.org/

@@ -61,12 +61,6 @@ class Migration(migrations.Migration):
                 ('status', models.IntegerField(default=2, verbose_name='Status', choices=[(1, 'Draft'), (2, 'Published')])),
                 ('publish_date', models.DateTimeField(help_text="With published selected, won't be shown until this time", null=True, verbose_name='Published from', blank=True)),
                 ('expiry_date', models.DateTimeField(help_text="With published selected, won't be shown after this time", null=True, verbose_name='Expires on', blank=True)),
-                ('login_required', models.BooleanField(default=False, help_text='If checked, only logged in users can view the form', verbose_name='Login required')),
-                ('send_email', models.BooleanField(default=True, help_text='If checked, the person entering the form will be sent an email', verbose_name='Send email')),
-                ('email_from', models.EmailField(help_text='The address the email will be sent from', max_length=75, verbose_name='From address', blank=True)),
-                ('email_copies', models.CharField(help_text='One or more email addresses, separated by commas', max_length=200, verbose_name='Send copies to', blank=True)),
-                ('email_subject', models.CharField(max_length=200, verbose_name='Subject', blank=True)),
-                ('email_message', models.TextField(verbose_name='Message', blank=True)),
                 ('sites', models.ManyToManyField(default=[1], related_name='forms_form_forms', to='sites.Site')),
             ],
             options={

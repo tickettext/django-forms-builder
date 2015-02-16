@@ -32,7 +32,7 @@ class BuiltFormNode(template.Node):
             form = template.Variable(self.value).resolve(context)
         if not isinstance(form, Form) or not form.published(for_user=user):
             return ""
-        t = get_template("forms/includes/built_form.html")
+        t = get_template("forms_builder/includes/built_form.html")
         context["form"] = form
         form_args = (form, context, post or None, files or None)
         context["form_for_form"] = FormForForm(*form_args)

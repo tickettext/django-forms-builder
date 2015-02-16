@@ -20,7 +20,7 @@ from forms_builder.forms.utils import split_choices
 
 class FormDetail(TemplateView):
 
-    template_name = "forms/form_detail.html"
+    template_name = "forms_builder/form_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super(FormDetail, self).get_context_data(**kwargs)
@@ -70,7 +70,7 @@ class FormDetail(TemplateView):
 form_detail = FormDetail.as_view()
 
 
-def form_sent(request, slug, template="forms/form_sent.html"):
+def form_sent(request, slug, template="forms_builder/form_sent.html"):
     """
     Show the response message.
     """

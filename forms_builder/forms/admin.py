@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from future.builtins import bytes, open
 
+import re, string
 from csv import writer
 from mimetypes import guess_type
 from os.path import join
@@ -145,7 +146,10 @@ class FormAdmin(admin.ModelAdmin):
                 response["Content-Disposition"] = attachment
                 queue = BytesIO()
                 workbook = xlwt.Workbook(encoding='utf8')
-                sheet = workbook.add_sheet(form.title[:31])
+                #strip out any non alphanum characters from the sheet name
+                pattern = re.compile('[^a-zA-Z0-9_ ]+')
+                sheet_title = pattern.sub('', form.title[:31])
+                sheet = workbook.add_sheet(sheet_title)
                 for c, col in enumerate(entries_form.columns()):
                     sheet.write(0, c, col)
                 for r, row in enumerate(entries_form.rows(csv=True)):

@@ -61,6 +61,7 @@ class FormDetail(TemplateView):
                 "errors": context["form_for_form"].errors,
                 "form": context["form_for_form"].as_p(),
                 "message": context["form"].response,
+                "redirect_url": context["form"].redirect_url
             })
             return HttpResponse(json_context, content_type="application/json")
         return super(FormDetail, self).render_to_response(context, **kwargs)

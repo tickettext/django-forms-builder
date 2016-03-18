@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 ('status', models.IntegerField(default=2, verbose_name='Status', choices=[(1, 'Draft'), (2, 'Published')])),
                 ('publish_date', models.DateTimeField(help_text="With published selected, won't be shown until this time", null=True, verbose_name='Published from', blank=True)),
                 ('expiry_date', models.DateTimeField(help_text="With published selected, won't be shown after this time", null=True, verbose_name='Expires on', blank=True)),
-                ('sites', models.ManyToManyField(default=[1], related_name='forms_form_forms', to='sites.Site')),
+                ('sites', models.ManyToManyField(default=[settings.SITE_ID], related_name='forms_form_forms', to='sites.Site')),
             ],
             options={
                 'abstract': False,
